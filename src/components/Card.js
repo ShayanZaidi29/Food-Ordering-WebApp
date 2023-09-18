@@ -1,32 +1,37 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import React from "react";
 
-export default function MediaCard() {
+
+export default function Card() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+    <div>
+      <div>
+        <div
+          className="card mt-3"
+          style={{ width: "18rem", maxHeight: "360px" }}>
+          <img src="https://www.healthkart.com/connect/wp-content/uploads/2023/01/900x500_banner_HK-Types-of-foods-that-you-should-eat-a-lot-rarely-and-occasionally.png" class="card-img-top" alt="..." />
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+            <p className="card-text">This is some important text</p>
+            <div className="container w-100">
+              <select className="m-2 h-100  bg-success rounded">
+                {Array.from(Array(6), (e, i) => {
+                  return (
+                    <option key={i + 1} value={i + 1}>
+                      {" "}
+                      {i + 1}{" "}
+                    </option>
+                  );
+                })}
+              </select>
+              <select className="m-2 h-100  bg-success rounded">
+                <option value="half"> Half </option>
+                <option value="full"> Full </option>
+              </select>
+              <div className="d-inline h-100 fs-6">Total Price</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
