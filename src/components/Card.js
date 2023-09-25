@@ -8,7 +8,7 @@ export default function Card() {
         <div
           className="card mt-3"
           style={{ width: "18rem", maxHeight: "360px" }}>
-          <img src="https://www.healthkart.com/connect/wp-content/uploads/2023/01/900x500_banner_HK-Types-of-foods-that-you-should-eat-a-lot-rarely-and-occasionally.png" class="card-img-top" alt="..." />
+          <img src="https://imgeng.jagran.com/images/2023/apr/Best%20Barbeque%20sets1682414705850.jpg" alt="..." />
           <div className="card-body">
             <h5 className="card-title">Card title</h5>
             <p className="card-text">This is some important text</p>
