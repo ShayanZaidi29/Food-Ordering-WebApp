@@ -46,7 +46,7 @@ export default function Home() {
       <div className="container">
         {foodCat.length > 0
           ? foodCat.map((data) => <div key={data.id}>{data.CategoryName}</div>)
-          : <div>No data available</div>}
+          : ""}
         <Card />
       </div>
       <Footer />
