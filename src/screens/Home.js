@@ -45,7 +45,9 @@ export default function Home() {
       <Carousal />
       <div className="container">
         {foodCat.length > 0
-          ? foodCat.map((data) => <div key={data.id}>{data.CategoryName}</div>)
+          ? foodCat.map((data) => <div key={data.id} className="fs-3 m-3">
+            {data.CategoryName}
+            </div>)
           : ""}
         <Card />
       </div>
