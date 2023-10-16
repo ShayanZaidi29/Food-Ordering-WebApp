@@ -13,7 +13,7 @@ export default function Card(props) {
         <div
           className="card mt-3"
           style={{ width: "18rem", maxHeight: "360px" }}>
-          <img src="https://imgeng.jagran.com/images/2023/apr/Best%20Barbeque%20sets1682414705850.jpg" alt="..." />
+          <img src={props.ImgSrc} alt="..." />
           <div className="card-body">
             <h5 className="card-title">{props.foodName}</h5>
            
@@ -30,8 +30,10 @@ export default function Card(props) {
               </select>
               <select className="m-2 h-100  bg-success rounded">
                 {priceOptions.map((data)=>{
-                  return <option key = {data} value={data}></option>
+                  return <option key={data} value={data}>{data}</option>
                 })}
+                
+               
               </select>
               <div className="d-inline h-100 fs-6">
                 Total Price
