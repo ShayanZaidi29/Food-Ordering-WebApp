@@ -8,6 +8,7 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [foodCat, setFoodCat] = useState([]);
   const [foodItem, setFoodItem] = useState([]);
+  const [foodItems, setFoodItems] = useState([])
 
   const loadData = async () => {
     try {
@@ -64,9 +65,6 @@ export default function Home() {
                   aria-label="Search"
                   value={search} onChange={(e)=> {setSearch(e.target.value)}}
                 />
-                {/* <button className="btn text-white bg-success" type="submit">
-                  Search
-                </button> */}
               </div>
             </div>
             <div className="carousel-item active">
@@ -137,15 +135,14 @@ export default function Home() {
                         )
                         .map((filterItems) => (
                           <div
-                            key={filterItems.id}
+                            key={filterItems._id}
                             className="col-12 col-md-6 col-lg-3"
                           >
                             {console.log(filterItems.url)}
-                            <Card
-                              foodName={filterItems.name}
-                              item={filterItems}
+                            
+                            <Card foodItem={filterItems}
                               options={filterItems.options[0]}
-                              ImgSrc={filterItems.img}
+                              
                             ></Card>
                           </div>
                         ))
