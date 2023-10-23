@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Badge from 'react-bootstrap/Badge'; 
+import Badge from 'react-bootstrap/Badge';
 import Modal from '../Modal';
 import Cart from '../screens/Cart';
-
+import {useCart} from './ContextReducer';
 
 export default function Navbar() {
-  const [cartView, setCartView] = useState(false)
-  const [isLoggedIn] = useState(!!localStorage.getItem("authToken")); // Check if the user is logged in
-
+  const [cartView, setCartView] = useState(false);
+  const isLoggedIn = !!localStorage.getItem("authToken");
+  let data = useCart(); 
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -54,36 +54,28 @@ export default function Navbar() {
               )}
             </ul>
             <div>
-              {isLoggedIn && <div className='btn bg-white text-success mx-2' onClick={()=> {setCartView(true)}}>
-                My Cart {" "}
-                <Badge pill bg="danger" > 2 </Badge>
-                </div>}
-               
-                {
+              {isLoggedIn && (
+                <div className="btn bg-white text-success mx-2" onClick={() => setCartView(true)}>
+                  My Cart{" "}
+                  <Badge pill bg="danger">
+                    {data.length}
+                  </Badge>
+                </div>
+              )}
 
-                // cartView? 
-                // <Modal onClose={()=> setCartView(false)} >
-                //   <Cart/>
-                // </Modal>:null
-
-                cartView ? 
-                <Modal onClose={()=> setCartView(false)} >
-                  <Cart/>
-                </Modal>: null
-               
-              
-                
-                }
+              {cartView && (
+                <Modal onClose={() => setCartView(false)}>
+                  <Cart />
+                </Modal>
+              )}
             </div>
-            <div className='d-flex'>
+            <div className="d-flex">
               {isLoggedIn ? (
-                <>
-                  <div className='btn bg-white text-danger mx-2' onClick={handleLogout}>
-                    Logout
-                  </div>
-                </>
+                <div className="btn bg-white text-danger mx-2" onClick={handleLogout}>
+                  Logout
+                </div>
               ) : (
-                <> {/* User is not logged in */}
+                <>
                   <Link className="btn bg-white text-success mx-1" to="/login">
                     Login
                   </Link>
