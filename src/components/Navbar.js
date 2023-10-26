@@ -4,15 +4,16 @@ import Badge from 'react-bootstrap/Badge';
 import Modal from '../Modal';
 import Cart from '../screens/Cart';
 import {useCart} from './ContextReducer';
+import cookies from "js-cookies";
 
 export default function Navbar() {
   const [cartView, setCartView] = useState(false);
-  const isLoggedIn = !!localStorage.getItem("authToken");
+  const isLoggedIn = cookies.getItem('token')
   let data = useCart(); 
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
+    cookies.removeItem('token');
     navigate("/login");
   };
 

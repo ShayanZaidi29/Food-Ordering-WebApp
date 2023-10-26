@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import cookies from "js-cookies";
 
 export default function MyOrder() {
 
     const [orderData, setorderData] = useState({})
 
     const fetchMyOrder = async () => {
-        console.log(localStorage.getItem('userEmail'))
+        console.log(cookies.getItem('email'))
         await fetch("http://localhost:5000/api/myOrderData", {
             // credentials: 'include',
             // Origin:"http://localhost:3000/login",
@@ -16,7 +17,7 @@ export default function MyOrder() {
                 'Content-Type': 'application/json'
             },
             body:JSON.stringify({
-                email:localStorage.getItem('userEmail')
+                email:cookies.getItem('userEmail')
             })
         }).then(async (res) => {
             let response = await res.json()

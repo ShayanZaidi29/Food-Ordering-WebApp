@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
 import Carousal from "../components/Carousal";
+import cookies from "js-cookies";
+
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -12,6 +14,7 @@ export default function Home() {
 
   const loadData = async () => {
     try {
+    
       const foodCatResponse = await fetch(
         "http://localhost:5000/api/foodCategory",
         {

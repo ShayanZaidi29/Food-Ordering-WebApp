@@ -1,6 +1,9 @@
 import React from 'react'
-import Delete from '@material-ui/icons/Delete'
+// import Delete from '@material-ui/icons/Delete'
 import { useCart, useDispatchCart } from '../components/ContextReducer';
+import cookies from "js-cookies";
+import { Button } from 'bootstrap';
+import {AiFillDelete} from "react-icons/ai";
 export default function Cart() {
   let data = useCart();
   let dispatch = useDispatchCart();
@@ -16,33 +19,27 @@ export default function Cart() {
   //   dispatch({type:"REMOVE",index:index})
   // }
 
-
-  
-
-  const handleCheckOut = async () =>{
-    // let userEmail = localStorage.getItem("userEmail");
-    
-    console.log(data);
-    let response = await fetch("http://localhost:5000/api/orderData",{
-      method:'POST',
-      headers:{
-        'Content-type': 'application/json'
+  const handleCheckOut = async () => {
+    let userEmail = cookies.getItem("email");
+    // console.log(data,localStorage.getItem("userEmail"),new Date())
+    let response = await fetch("http://localhost:5000/api/orderData", {
+      // credentials: 'include',
+      // Origin:"http://localhost:3000/login",
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
       },
-      body:JSON.stringify({
-        order_data:data,
-        email:"shayan123@gmail.com",
-        order_date:new Date().toDateString()
-      }) 
-    }
-    );
-    console.log("Order Response:", response)
-    if(response.status === 200){
-      dispatch({type:"DROP"})
+      body: JSON.stringify({
+        order_data: data,
+        email: userEmail,
+        order_date: new Date().toDateString()
+      })
+    });
+    console.log("JSON RESPONSE:::::", response.status)
+    if (response.status === 200) {
+      dispatch({ type: "DROP" })
     }
   }
-
-
-
 
   let totalPrice = data.reduce((total, food) => total + food.price, 0)
   return (
@@ -69,13 +66,14 @@ export default function Cart() {
                 <td>{food.qty}</td>
                 <td>{food.size}</td>
                 <td>{food.price}</td>
-                <td ><button type="button" className="btn p-0"><Delete onClick={() => { dispatch({ type: "REMOVE", index: index }) }} /></button> </td></tr>
+                <td ><button type="button" className="btn p-0"  onClick={() => { dispatch({ type: "REMOVE", index: index }) }} > <AiFillDelete>Delete</AiFillDelete></button> </td>
+                </tr>
             ))}
           </tbody>
         </table>
         <div><h1 className='fs-2'>Total Price: {totalPrice}/-</h1></div>
         <div>
-          <button className='btn bg-success mt-5 ' onClick={handleCheckOut}> Check Out </button>
+          <button className='btn bg-success mt-5 ' onClick={handleCheckOut} > Check Out </button>
         </div>
       </div>
 

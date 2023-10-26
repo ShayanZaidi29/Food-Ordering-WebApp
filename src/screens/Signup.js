@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import cookies from "js-cookies";
+import { Navigate } from "react-router-dom";
 
 export default function Signup() {
   const [credentials, setcredentials] = useState({
@@ -24,8 +26,12 @@ export default function Signup() {
     const json = await response.json()
     console.log(json);
     if (json.success) {
+
+      // Navigate("/")
+      
       //save the auth toke to local storage and redirect
-      localStorage.setItem('token', json.authToken)
+      // localStorage.setItem('token', json.authToken)
+      cookies.setItem('token', json.authToken)
       // navigate("/login")
 
     }
