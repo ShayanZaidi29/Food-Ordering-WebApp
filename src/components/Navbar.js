@@ -42,7 +42,7 @@ export default function Navbar() {
                   Home
                 </Link>
               </li>
-              {isLoggedIn && (
+              {/* {isLoggedIn && (
                 <li className="nav-item">
                   <Link
                     className="nav-link active fs-5"
@@ -52,7 +52,7 @@ export default function Navbar() {
                     My Orders
                   </Link>
                 </li>
-              )}
+              )} */}
             </ul>
             <div>
               {isLoggedIn && (

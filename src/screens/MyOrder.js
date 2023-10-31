@@ -8,16 +8,19 @@ export default function MyOrder() {
     const [orderData, setorderData] = useState({})
 
     const fetchMyOrder = async () => {
-        console.log(cookies.getItem('email'))
+        var email = await cookies.getItem("email")
+        console.log(email);
+       
         await fetch("http://localhost:5000/api/myOrderData", {
             // credentials: 'include',
             // Origin:"http://localhost:3000/login",
             method: 'POST',
             headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            },
+              },
             body:JSON.stringify({
-                email:cookies.getItem('userEmail')
+                email:email.toString( )
             })
         }).then(async (res) => {
             let response = await res.json()
