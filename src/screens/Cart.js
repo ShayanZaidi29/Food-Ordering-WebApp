@@ -3,7 +3,10 @@ import React from 'react'
 import { useCart, useDispatchCart } from '../components/ContextReducer';
 import cookies from "js-cookies";
 import { Button } from 'bootstrap';
+import { Link } from 'react-router-dom';
 import {AiFillDelete} from "react-icons/ai";
+import ReviewPage from '../screens/ReviewPage';
+
 export default function Cart() {
   let data = useCart();
   let dispatch = useDispatchCart();
@@ -72,6 +75,7 @@ export default function Cart() {
           </tbody>
         </table>
         <div><h1 className='fs-2'>Total Price: {totalPrice}/-</h1></div>
+        <ReviewPage/>
         <div>
           <button className='btn bg-success mt-5 ' onClick={handleCheckOut} > Check Out </button>
         </div>

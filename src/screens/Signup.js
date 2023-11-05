@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import cookies from "js-cookies";
-import { Navigate } from "react-router-dom";
 
 export default function Signup() {
   const [credentials, setcredentials] = useState({
@@ -14,29 +13,23 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/api/createuser", {
-      // credentials: 'include',
-      // Origin:"http://localhost:3000/login",
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.geolocation })
-
     });
-    const json = await response.json()
+    const json = await response.json();
     console.log(json);
     if (json.success) {
+      cookies.setItem('token', json.authToken);
+      setcredentials({ name: "", email: "", password: "", geolocation: "" });
 
-      // Navigate("/")
-      
-      //save the auth toke to local storage and redirect
-      // localStorage.setItem('token', json.authToken)
-      cookies.setItem('token', json.authToken)
-      // navigate("/login")
-
+      // Redirect to home page
+      window.location.href = '/'; // Change this to the actual path of your home page
     }
     else {
-      alert("Enter Valid Credentials")
+      alert("Enter Valid Credentials");
     }
   }
 

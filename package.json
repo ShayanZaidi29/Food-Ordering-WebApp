@@ -13,10 +13,10 @@
     "fix": "^0.0.3",
     "js-cookies": "^1.0.4",
     "react": "^18.0.0",
-    "react-bootstrap": "^2.4.0",
+    "react-bootstrap": "^2.9.1",
     "react-dom": "^18.0.0",
     "react-icons": "^4.11.0",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.18.0",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
