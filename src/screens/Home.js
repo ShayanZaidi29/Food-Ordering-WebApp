@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Card from "../components/Card";
 import Carousal from "../components/Carousal";
 import cookies from "js-cookies";
+import Chatbot from "../chatbot/Chatbot";
 
 
 export default function Home() {
@@ -158,6 +159,7 @@ export default function Home() {
             : ""}
         </div>
       </div>
+      <Chatbot/>
       <Footer />
     </div>
   );

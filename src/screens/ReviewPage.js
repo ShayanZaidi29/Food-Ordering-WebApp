@@ -16,13 +16,13 @@ const ReviewForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add logic to handle review submission here
+    
     console.log('Form submitted:', formData);
   };
 
   return (
     <div className="review-form">
-      <h2>Leave a Review</h2>
+      <h2>Review</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Your Name:</label>

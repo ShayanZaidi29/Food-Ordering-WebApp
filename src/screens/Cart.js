@@ -80,9 +80,6 @@ export default function Cart() {
           <button className='btn bg-success mt-5 ' onClick={handleCheckOut} > Check Out </button>
         </div>
       </div>
-
-
-
     </div>
   )
 }
