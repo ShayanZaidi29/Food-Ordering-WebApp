@@ -79,7 +79,7 @@ console.log(json.success);
           <button type='submit' className='m-3 btn btn-success'>
             Submit
           </button>
-          <Link to='/signup' className='m-3 mx-1 btn btn-danger'>
+          <Link to='/createuser' className='m-3 mx-1 btn btn-danger'>
             New User
           </Link>
         </form>
