@@ -38,11 +38,11 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto mb-2">
               <li className="nav-item">
-                <Link className="btn bg-white text-success mx-1" aria-current="page" to="/">
+                <Link className=" nav-link active fs-5" aria-current="page" to="/">
                   Home
                 </Link>
               </li>
-              {/* {isLoggedIn && (
+              {isLoggedIn && (
                 <li className="nav-item">
                   <Link
                     className="nav-link active fs-5"
@@ -52,7 +52,7 @@ export default function Navbar() {
                     My Orders
                   </Link>
                 </li>
-              )} */}
+              )}
             </ul>
             <div>
               {isLoggedIn && (
